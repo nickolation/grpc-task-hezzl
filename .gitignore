@@ -1,0 +1,5 @@
+# Sensetive configuration of the procceses.
+.env
+
+# Storage of the temporary kafka and clickhouse generated metadata, logs etc.
+**/shared

@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+option go_package = "github.com/nickolation/grpc-task-hezzl/grpc/proto";
+
+package service_proto;
+
+service UserActionsService {
+    rpc NewUser(NewUserRequest) returns (NewUserResponse) {};
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {};
+    rpc GetUserList(GetUserListRequest) returns (GetUserListResponse) {};
+    rpc GetUserStringedList(GetUserListRequest) returns (GetUserStringedListResponse) {};
+} 
+ 
+// Add-method part of messages
+message NewUserRequest {
+    string Username = 1;
+    bytes Password = 2;
+
+    string Gender = 3;
+    int32 Age = 4;
+
+    string Description = 5;
+}  
+
+message NewUserResponse {
+    bool InsertStatus = 1;
+
+    int32 PostgresId = 2;
+}  
+
+// Delete-method part of messages
+message DeleteUserRequest {
+    string Username = 1;
+}  
+
+message DeleteUserResponse {
+    bool DeleteStatus = 1;
+    string DeletedUsername = 2;
+} 
+ 
+
+// GetList-method part of messages
+message User {
+    int32  Id = 1;
+    string Username = 2;
+	bytes Password = 3; 
+	string Gender = 4;
+	int32 Age = 5;
+	string Description = 6;
+    bytes Hash = 7;
+    google.protobuf.Timestamp Date = 8;
+}
+ 
+message GetUserListResponse {
+    bool SelectAllStatus = 1;
+    repeated User UserList = 2;
+}
+ 
+
+message GetUserListRequest {
+    bool AllUsersStatus = 1;
+}  
+
+message GetUserStringedListResponse {
+    bool SelectAllStatus = 1;
+    string StringJSONResult = 2;
+} 

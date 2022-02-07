@@ -1,0 +1,7 @@
+grpc:
+  server:
+    addr: ":8000"
+    protocol: "tcp"
+
+  client_api: 
+    addr: ":8888" 

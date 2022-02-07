@@ -1,0 +1,10 @@
+db:
+  port: "5436"
+  host: "localhost"
+  username: "postgres"
+  dbname: "postgres"
+  
+redis:
+   addr: ":6379"
+   cache_ttl: 1
+

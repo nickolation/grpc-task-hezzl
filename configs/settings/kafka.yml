@@ -1,0 +1,4 @@
+kafka: 
+  cluster_topic: "logs"
+  client_id: "my-kafka-client"
+  addrs: "localhost:19092, localhost:29092, localhost:39092"
