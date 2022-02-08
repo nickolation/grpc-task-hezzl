@@ -15,3 +15,10 @@ run-grpc-server:
 
 run-grpc-client:
 	cd ./.. && go run grpc/test_grpc_apiclient/main.go 
+
+create-logs-topic:
+	docker run --net=host --rm confluentinc/cp-kafka:latest kafka-topics --create --topic logs --partitions 4 --replication-factor 2 --if-not-exists --bootstrap-server localhost:19092
+
+consume-logs:
+	kafkacat -C -b localhost:19092,localhost:29092,localhost:39092 -t logs 
+
